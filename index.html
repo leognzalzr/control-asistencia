@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163d32">
+  <meta name="description" content="Presente: aplicación académica para el control de asistencia, roles e informes por fecha.">
+  <title>Presente · Control de asistencia</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script defer src="js/logica.js"></script>
+  <script defer src="js/datos.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <noscript>Esta aplicación necesita JavaScript. Activá JavaScript en tu navegador para continuar.</noscript>
+  <section id="login" class="login-layout" aria-label="Inicio de sesión">
+    <div class="login-story">
+      <div class="brand"><img src="assets/logo.svg" alt="" width="44" height="44"><span>presente<span class="brand-dot">.</span></span></div>
+      <div class="story-content">
+        <span class="eyebrow light">PERSONAS · TIEMPO · ORGANIZACIÓN</span>
+        <h1>Cada jornada<br>cuenta.</h1>
+        <p>La asistencia de tu equipo, en un solo lugar.<br>Más claridad para empezar cada día.</p>
+        <img class="team-illustration" src="assets/equipo.svg" alt="Ilustración de un equipo junto a un panel de asistencia" width="640" height="340">
+      </div>
+      <div class="story-footer"><span>Control de asistencia</span><span>Hecho para tu equipo ↗</span></div>
+    </div>
+    <div class="login-panel">
+      <div class="login-card">
+        <span class="eyebrow">BIENVENIDO A PRESENTE</span>
+        <h2>Todo empieza<br>con estar.</h2>
+        <p class="muted">Ingresá a tu cuenta para gestionar tu jornada.</p>
+        <form id="login-form">
+          <label for="usuario">Usuario</label>
+          <input id="usuario" name="usuario" autocomplete="username" placeholder="Tu nombre de usuario" required maxlength="30">
+          <label for="clave">Contraseña</label>
+          <div class="password-field"><input id="clave" name="clave" type="password" autocomplete="current-password" placeholder="Tu contraseña" required><button id="ver-clave" type="button" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div>
+          <p id="login-error" class="form-error" role="alert"></p>
+          <button class="button primary full" type="submit">Iniciar sesión <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="demo-access">
+          <div class="demo-title"><span class="small-dot"></span> Probá la aplicación</div>
+          <p>Elegí un perfil para completar sus datos.</p>
+          <div class="demo-options"><button type="button" data-demo="gerente">Gerente</button><button type="button" data-demo="asistente">Asistente</button><button type="button" data-demo="cajero">Cajero</button></div>
+          <small>Usuarios: gerente, asistente y cajero · Clave: 123456</small>
+        </div>
+        <p class="academic-note">Proyecto académico · Cuentas de demostración.<br>Los datos se guardan solo en este navegador.</p>
+      </div>
+    </div>
+  </section>
+  <div id="aplicacion" class="app-layout" hidden>
+    <aside class="sidebar">
+      <div class="brand"><img src="assets/logo.svg" alt="" width="38" height="38"><span>presente<span class="brand-dot">.</span></span></div>
+      <div class="workspace-label">ESPACIO DE TRABAJO<span id="empresa-sidebar"></span></div>
+      <nav aria-label="Navegación principal">
+        <button type="button" data-page="inicio"><span aria-hidden="true">◫</span> Resumen</button>
+        <button type="button" data-page="marcar"><span aria-hidden="true">◷</span> Mi asistencia</button>
+        <button type="button" data-page="informes" data-permission="informes"><span aria-hidden="true">▤</span> Informes</button>
+        <button type="button" data-page="equipo" data-permission="equipo"><span aria-hidden="true">♧</span> Equipo</button>
+        <button type="button" data-page="ajustes" data-permission="ajustes"><span aria-hidden="true">⚙</span> Configuración</button>
+      </nav>
+      <div class="sidebar-tip"><span class="small-dot"></span> Una jornada a la vez<p>La puntualidad empieza con un buen registro.</p></div>
+      <div class="profile"><span id="avatar" class="avatar"></span><div><strong id="nombre-usuario"></strong><small id="rol-usuario"></small></div><button type="button" id="salir" title="Cerrar sesión" aria-label="Cerrar sesión">↪</button></div>
+    </aside>
+    <div class="main-layout">
+      <header class="topbar"><span>MI ESPACIO <span class="breadcrumb">/ <span id="pagina-actual">Resumen</span></span></span><span class="today-label" id="fecha-cabecera"></span></header>
+      <main id="contenido" tabindex="-1"></main>
+      <footer class="app-footer"><span>Presente · Control de asistencia</span><span>Demo académica · Datos en este navegador</span></footer>
+    </div>
+  </div>
+  <dialog id="modal"><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
